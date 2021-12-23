@@ -41,42 +41,4 @@ public class ProductApiFunctionalApplication {
 		};
 	}
 
-	@Bean
-	RouterFunction<ServerResponse> routes(ProductHandler handler) {
-		//In this way there are some repetitions, but maybe it is clearer what the code does.
-
-		return RouterFunctions.route()
-				.GET("/products/events", RequestPredicates.accept(MediaType.TEXT_EVENT_STREAM), handler::getProductEvents)
-				.GET("/products/{id}", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::getProduct)
-				.GET("/products", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::getAllProducts)
-				.PUT("/products/{id}", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::updateProduct)
-				.POST("/products", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::saveProduct)
-				.DELETE("/products/{id}", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::deleteProduct)
-				.DELETE("/products", RequestPredicates.accept(MediaType.APPLICATION_JSON), handler::deleteAllProducts)
-				.build();
-
-
-
-		//As an alternative it is possible to write the same thing in this way for avoid repetitions.
-		//Here it is used a nest path builder
-		/*
-		return RouterFunctions.route()
-				.path("/products",
-						builder -> builder
-								.nest(RequestPredicates.accept(MediaType.APPLICATION_JSON).or(RequestPredicates.accept(MediaType.TEXT_EVENT_STREAM)),
-										nesterBuilder -> nesterBuilder
-												.GET("/events", handler::getProductEvents)
-												.GET("/{id}", handler::getProduct)
-												.GET(handler::getAllProducts)
-												.PUT("/{id}", handler::updateProduct)
-												.POST(handler::saveProduct)
-								)
-								.DELETE("/{id}", handler::deleteProduct)
-								.DELETE(handler::deleteProduct)
-				)
-				.build();
-
-		 */
-
-	}
 }
