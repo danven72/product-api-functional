@@ -1,4 +1,4 @@
-# product-api-annotation
+# product-api-functional
 
 REST API example with Java11 - Reactive SPRING and Mongo DB
 
