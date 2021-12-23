@@ -1,17 +1,11 @@
 package com.wiredbraincoffee.productapifunctional;
 
-import com.wiredbraincoffee.productapifunctional.handler.ProductHandler;
 import com.wiredbraincoffee.productapifunctional.model.Product;
 import com.wiredbraincoffee.productapifunctional.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.server.RequestPredicates;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 
 @SpringBootApplication
